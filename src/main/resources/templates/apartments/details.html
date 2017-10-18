@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Apartments</title>
+</head>
+<body>
+{{> /common/_navigation }}
+
+	<h1>Only ${{ apartment.rent }}</h1>
+	<p>
+		{{ apartment.address }}<br> {{ apartment.city }},
+		{{ apartment.state }} {{ apartment.zipCode }}
+	</p>
+	<dl>
+		<dt>Number of bedrooms</dt>
+		<dd>{{ apartment.numberOfBedrooms }}</dd>
+		<dt>Number of bathrooms</dt>
+		<dd>{{ apartment.numberOfBathrooms }}</dd>
+		<dt>Square footage</dt>
+		<dd>{{ apartment.squareFootage }}</dd>
+		<dt>Created by</dt>
+		<dd>{{ creator }}</dd>
+		<dt>Number of Likes</dt>
+		<dd>{{ numberOfLikes }}</dd>
+	</dl>
+	
+	{{#noUser}}
+		<a href="/login?returnPath=/apartments/{{ apartment.id }}">Login to LIKE this apartment</a>
+	{{/noUser}}
+	
+	{{#user}}
+		{{#notLiked}}
+			<form method="post" action="/apartments/{{ apartment.id }}/like">
+				<button>Like this apartment</button>
+				<input type="hidden" name="csrf" value="{{ csrf }}">
+			</form>
+		{{/notLiked}}
+		
+		{{#listed}}
+			<h3>Liked by</h3>
+			{{#likers}}
+				<div>{{ firstName }} {{ lastName }}</div>
+			{{/likers}}
+			
+			<br>
+			{{#isActive}}
+				<form method="post" action="/apartments/{{ apartment.id }}/deactivations">
+					<button>Deactivate listing</button>
+					<input type="hidden" name="csrf" value="{{ csrf }}">
+				</form>
+			{{/isActive}}
+			
+			{{#notActive}}
+				<form method="post" action="/apartments/{{ apartment.id }}/activations">
+					<button>Activate listing</button>
+					<input type="hidden" name="csrf" value="{{ csrf }}">
+				</form>
+			{{/notActive}}
+		{{/listed}}
+	{{/user}}	
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add an Apartment</title>
+</head>
+<body>
+{{> /common/_navigation }}
+	<form method="post" action="/apartments">
+		<input type="text" name="address" placeholder="address" required autofocus>
+		<br>
+		<input type="text" name="city" placeholder="city" required>
+		<br>
+		<input type="text" name="state" placeholder="state" required>
+		<br>
+		<input type="text" name="zip_code" placeholder="zip code" required>
+		<br>
+		<input type="number" name="number_of_bedrooms" placeholder="bedrooms" required>
+		<br>
+		<input type="number" step="any" name="number_of_bathrooms" placeholder="bathrooms" required>
+		<br>
+		<input type="number" name="square_footage" placeholder="square footage" required>
+		<br>
+		<input type="number" name="rent" placeholder="rent" required>
+		<br>
+		<button>Add listing</button>
+		<input type="hidden" name="csrf" value="{{ csrf }}">
+	</form>
+</body>
+</html>

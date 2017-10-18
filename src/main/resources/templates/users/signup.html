@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+{{> /common/_navigation }}
+	<form method="post" action="/users">
+		<input type="email" name="email" required placeholder="email" autofocus>
+		<input type="password" name="password" required placeholder="password">
+		<input type="text" name="first_name" required placeholder="first name">
+		<input type="text" name="last_name" required placeholder="last name">
+		<button>Sign up</button>
+		<input type="hidden" name="csrf" value="{{ csrf }}">
+	</form>
+</body>
+</html>

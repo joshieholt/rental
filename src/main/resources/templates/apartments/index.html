@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Your Listings</title>
+</head>
+<body>
+{{> /common/_navigation }}
+	<h1>Your Listings</h1>
+
+	<h2>Active Listings</h2>
+	{{#activeApartments}}
+			<div>
+				<a href="/apartments/{{ id }}">{{ address }}</a>
+			</div>
+	{{/activeApartments}}
+	
+	<h2>Inactive Listings</h2>
+	{{#inactiveApartments}}
+		<div>
+			<a href="/apartments/{{ id }}">{{ address }}</a>
+		</div>
+	{{/inactiveApartments}}
+</body>
+</html>

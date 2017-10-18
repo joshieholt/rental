@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+	{{> /common/_navigation }}
+
+	<form method="post" action="/login">
+		<input type="email" name="email" placeholder="email" autofocus>
+		<input type="password" name="password" placeholder="password">
+		<input type="hidden" name="returnPath" value="{{ returnPath }}">
+		<button>Login</button>
+		<input type="hidden" name="csrf" value="{{ csrf }}">
+	</form>
+</body>
+</html>

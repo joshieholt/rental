@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to your New HOME!</title>
+</head>
+<body>
+{{> /common/_navigation }}
+	<h1>Apartments!</h1>
+	{{#apartments}}
+		<div>
+			<a href="/apartments/{{ id }}">{{ address }}</a>
+		</div>
+	{{/apartments}}
+	
+	<input type="hidden" name="csrf" value="{{ csrf }}">
+</body>
+</html>

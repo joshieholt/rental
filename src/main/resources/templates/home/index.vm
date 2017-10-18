@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to your New HOME!</title>
+</head>
+<body>
+	#if ($noUser) <a href="/login">Login</a> #end
+	
+	#if ($currentUser) <div>Hello, $currentUser.email</div> #end
+	
+	<h1>Apartments!</h1>
+
+	#foreach ($apartment in $apartments)
+		<div>
+			<a href="/apartments/$apartment.id">$apartment.address</a>
+		</div>
+	#end
+	
+</body>
+</html>
